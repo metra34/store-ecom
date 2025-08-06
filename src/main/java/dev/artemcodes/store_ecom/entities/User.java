@@ -33,8 +33,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
     @Builder.Default
     private List<Address> addresses = new ArrayList<>();
+
     @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
     private Profile profile;
+
     @ManyToMany
     @JoinTable(
             name = "wishlist",
