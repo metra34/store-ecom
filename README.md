@@ -1,6 +1,6 @@
 # Store E-Commerce Platform
 
-A generic online shopping infrastructure built with Spring Boot backend. This project provides a robust foundation for building e-commerce applications with modern Java technologies.
+A generic online shopping platform built with a Spring Boot backend and a focus on the overall infrastructure.  
 
 ## Technologies Used
 
