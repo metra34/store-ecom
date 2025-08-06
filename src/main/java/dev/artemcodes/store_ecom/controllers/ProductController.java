@@ -18,14 +18,9 @@ public class ProductController {
 
     @GetMapping
     public Iterable<ProductDto> getAllProducts(@RequestParam(required = false, name = "categoryId") Short categoryId) {
-        var result = productRepository
-                .findAll()
-                .stream()
-                .map(productMapper::toDto);
-
-        if ( categoryId != null && categoryId >= 0 ) {
-            result = result.filter(product -> categoryId.equals(product.getCategoryId()));
-        }
-        return result.toList();
+        var result = categoryId != null && categoryId > 0 ?
+                productRepository.findByCategoryId(categoryId) :
+                productRepository.findAll();
+        return result.stream().map(productMapper::toDto).toList();
     }
 }
