@@ -8,6 +8,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Set;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping("/users")
@@ -16,7 +18,11 @@ public class UserController {
     private final UserMapper userMapper;
 
     @GetMapping
-    public Iterable<UserDto> getAllUsers(@RequestParam String sort) {
+    public Iterable<UserDto> getAllUsers(@RequestParam(required = false, defaultValue = "", name = "sort") String sort) {
+        if (!Set.of("id", "name", "email").contains(sort)) {
+            sort = "id";
+        }
+
         return userRepository.findAll(Sort.by(sort)) //
                 .stream()//
                 .map(userMapper::toDto) //

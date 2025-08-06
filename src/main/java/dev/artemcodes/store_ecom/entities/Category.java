@@ -17,7 +17,7 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Byte id;
+    private Short id;
 
     @Column(name = "name")
     private String name;
@@ -29,7 +29,7 @@ public class Category {
         this.name = name;
     }
 
-    public Category(byte id) {
+    public Category(short id) {
         this.id = id;
     }
 }
