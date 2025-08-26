@@ -1,14 +1,14 @@
 package dev.artemcodes.store_ecom.dtos;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
-@AllArgsConstructor
+import java.math.BigDecimal;
+
+@Data
 public class ProductDto {
     private Long id;
     private String name;
     private String description;
-    private Double price;
+    private BigDecimal price;
     private Short categoryId;
 }
